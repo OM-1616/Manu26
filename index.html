@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For my baby❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html {scroll-behavior: smooth;
+}
+
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', sans-serif;
+      color: #2b2b2b;
+      overflow-x: hidden;
+    }
+
+    /* 🎞️ Slideshow Background */
+    .slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: slideshow 18s infinite;
+}
+
+/* timing offsets */
+.slideshow img:nth-child(1) { animation-delay: 0s; }
+.slideshow img:nth-child(2) { animation-delay: 3s; }
+.slideshow img:nth-child(3) { animation-delay: 6s; }
+.slideshow img:nth-child(4) { animation-delay: 9s; }
+.slideshow img:nth-child(5) { animation-delay: 12s; }
+.slideshow img:nth-child(6) { animation-delay: 15s; }
+.slideshow img:nth-child(7) { animation-delay: 18s; }
+
+/* animation */
+@keyframes slideshow {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  25%  { opacity: 1; }
+  33%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 220, 230, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: -1;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header h1 {
+      font-family: 'Comic Sans MS', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      background: #e63946;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { background: #d62839; transform: translateY(-2px); }
+
+    section { padding: 5rem 2rem; max-width: 1100px; margin: auto; }
+
+    .card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .love-note { font-family: 'Comic Sans MS', serif; font-size: 1.2rem; line-height: 1.8; }
+
+    footer { text-align: center; padding: 3rem 1rem; font-size: 0.9rem; opacity: 0.8; }
+
+    /* ❤️ Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      color: rgba(255, 0, 80, 0.7);
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+
+    /* 🎉 Confetti */
+    .confetti {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      top: -20px;
+      animation: fall 10s linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔐 Lock Screen -->
+  <div id="lock" style="position:fixed;inset:0;background:#ffdbe5;display:flex;align-items:center;justify-content:center;z-index:9999;">
+    <div class="card" style="max-width:400px;text-align:center">
+      <h2 style="font-family:'Playfair Display',serif">Hey Mansi 💖</h2>
+      <p class="love-note">What’s your nickname that I like to call you by?</p>
+      <input id="nickname" placeholder="Type here…" style="padding:0.6rem 1rem;border-radius:20px;border:1px solid #ccc;width:100%;margin:1rem 0;font-size:1rem" />
+      <button class="btn" onclick="unlock()">Submit</button>
+      <p id="lock-msg" style="margin-top:1rem;font-size:0.95rem"></p>
+    </div>
+  </div>
+
+
+  <div class="slideshow">
+  <img src="photo1.jpg" alt="">
+  <img src="photo2.jpg" alt="">
+  <img src="photo3.jpg" alt="">
+  <img src="photo4.jpg" alt="">
+  <img src="photo5.jpg" alt="">
+  <img src="photo6.jpg" alt="">
+  <img src="photo7.jpg" alt="">
+</div>
+
+  <div class="overlay"></div>
+
+  <audio id="bg-music" loop>
+    <source src="videoplayback.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 💋 Kiss sound -->
+  <audio id="kiss-sound">
+    <source src="mwah.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <div>
+      <h1>Happy Valentine’s Day, Manu❤️</h1>
+      <p>To the girl who makes my world softer, brighter, and infinitely better just by being in it.</p>
+      <a href="#letter" class="btn">Open My Heart</a>
+
+    </div>
+  </header>
+
+  <section id="letter">
+    <div class="card">
+      <h2>My Love Letter to You</h2>
+      <p class="love-note">From the moment you walked into my life, everything changed in the most beautiful way. You are my calm, my chaos, my laughter, and my peace all at once. You're the only person whom i gave a part of myself which I used to protect. It wasn't all that fairytale with us, I accept i didn't fall in love at the first sight, yhh makes sense right, faulty eyes and no brain ig. Anyways, but I saw something for which I was ready to take a chance due to which I'm falling for you more and more, day after day. I didn't realize until you hit me with that good night text with just the smiley emoji saying we're not good and my rest of the day didn't mean anything. I always had my guard on but you taught me that it's okay not to have it with you. I know it would have been better if I was there with you but since we're not you can have your freedom until then. I make mistakes, I do and I know there are times I hurt you and i won't take it back but I love you more than anything. After a messy talk I like the way you care for me, I like the way you ask questions to get reassurance while giving me tough act. I can feel that your love is really intense and yet so soft that even when you're overthinking you just me hit with a I'm good dw. Sometimes I think do i even deserve your love. But then a sudden rush of keeping you tucked in comes. You don't know how all my aggression, all my hard boy qualities takes a U-turn when i'm with you. You've made me softer, considerate, mostly patient and somewhere I like this side of my myself. I don't say it enough but I'm grateful for you, for your efforts, for loyalty and for choosing me when i'm hard to be chosen.<br><br> You're not just someone I love, you're the reason this guy has softness and this light in his life.<br><br>I love you baby❤️  </p>
+    </div>
+  </section>
+
+  <section id="valentine-question">
+    <div class="card" style="text-align:center">
+      <h2>Will you be my Valentine?💘</h2>
+      <div id="question-buttons" style="margin-top:2rem">
+        <button class="btn" onclick="answerYes()">Yes</button>
+        <button class="btn" style="background:#999;margin-left:1rem" onclick="answerNo()">No</button>
+      </div>
+      <div id="response" class="love-note" style="margin-top:2rem"></div>
+    </div>
+  </section>
+
+  <footer>for you, Manu❤️</footer>
+
+  <!-- 💋 Final Kiss Screen -->
+  <div id="kiss" style="position:fixed;inset:0;background:linear-gradient(135deg,#ff9a9e,#fad0c4);display:none;align-items:center;justify-content:center;z-index:9998;text-align:center;padding:2rem;">
+    <div>
+      <h1 style="font-family:'Comic Sans MS',serif;font-size:3rem">💋</h1>
+      <p class="love-note" style="font-size:1.6rem">Come here, baby…<br>this one’s just for you 💕</p>
+    </div>
+  </div>
+
+  <script>
+    function unlock() {
+      const val = document.getElementById('nickname').value.trim().toLowerCase();
+      const msg = document.getElementById('lock-msg');
+      if (val === 'manu' || val === 'princess') {
+        document.getElementById('lock').style.display = 'none'; 
+        startMusic();
+      } else {
+        msg.innerHTML = "Think princess or would you call me for it, I won't mind i'd get to hear you :)";
+      }
+    }
+
+    let noCount = 0;
+
+    function startMusic() {
+      const music = document.getElementById('bg-music');
+      music.volume = 0.6;
+      music.play();
+      document.getElementById('letter');
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+
+    function confettiBurst() {
+      for (let i = 0; i < 80; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = `hsl(${Math.random()*360},100%,60%)`;
+        c.style.animationDuration = Math.random()*2 + 2 + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 3000);
+      }
+    }
+
+    function answerYes() {
+      document.getElementById('question-buttons').style.display = 'none';
+      document.getElementById('response').innerHTML = `
+      <strong>I love you the most baby❤️</strong><br><br>
+      <strong>I knew it — my baby loves me❤️</strong><br><br>
+        I adore you more than words can ever explain.
+        You are my favorite person and my forever Valentine, Manu❤️.
+      `;
+      confettiBurst();
+      setTimeout(showKissScreen, 10000);
+    }
+
+    function answerNo() {
+      noCount++;
+      if (noCount === 1) {
+        document.getElementById('response').innerHTML = "I won't even ask you for a second chance for myself ever… so here it is. Make it count💗<br><br>Hu radi jaish😭";
+        document.getElementById('question-buttons').innerHTML = '<button class="btn" onclick="understand()">Okay</button>';
+      }
+    }
+
+    function understand() {
+      document.getElementById('response').innerHTML = 'Do you understand?';
+      document.getElementById('question-buttons').innerHTML = '<button class="btn" onclick="secondQuestion()">Okay</button>';
+    }
+
+    function secondQuestion() {
+      document.getElementById('question-buttons').innerHTML = '<button class="btn" onclick="answerYes()">Yes</button><button class="btn" style="background:#999;margin-left:1rem" onclick="finalNo()">No</button>';
+    }
+
+    function finalNo() {
+      document.getElementById('question-buttons').style.display = 'none';
+      document.getElementById('response').innerHTML = `
+        Okay 😊<br><br>
+        <span style="font-size:1rem;">
+          This is just a website getting your feelings as the answers and not me.
+          I won't pressurize you to stay by my side. I don't want you to stay if you don't want to. Idc about this social media videos about not giving you the option of no. If it's not your choice, I'll cry for two days in my room and will pretend to be okay for I don't know how much time. But whatever happens don't fall in wrong hands, this boy really cares about you :)
+        </span>
+      `;
+    }
+
+    function showKissScreen() {
+      const kiss = document.getElementById('kiss');
+      const sound = document.getElementById('kiss-sound');
+      kiss.style.display = 'flex';
+      sound.volume = 1;
+      sound.play();
+    }
+  </script>
+
+</body>
+</html>
